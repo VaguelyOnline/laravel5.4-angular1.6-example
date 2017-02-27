@@ -1,0 +1,11 @@
+{
+  "name": "showroom",
+  "authors": [
+    "Nathan Woodhouse <nathan@calibraelearning.com>"
+  ],
+  "description": "Example Angular / Laravel project",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true
+}

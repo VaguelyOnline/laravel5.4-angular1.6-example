@@ -1,0 +1,16 @@
+<div class="title m-b-md">
+    Showroom
+</div>
+
+<form ng-submit="controller.addCar(newCar)">
+    <input type="text" ng-model="newCar.title"> <input type="submit" value="add">
+</form>
+
+<div ng-repeat="car in controller.cars">
+    <h3>
+        <a href="#" ng-click="showCar(car)">{[{ car.title }]}</a>
+    </h3>
+</div>
+
+<button ng-click="controller.showCar()">Go</button>
+</div>
