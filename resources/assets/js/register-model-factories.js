@@ -1,5 +1,5 @@
 // register the model factories
-window.app.module.factory('Car', function ($resource) {
+window.app.module.factory('Car', function CarFactory ($resource) {
     // create the car as a resource - a model that is backed by a data service
     var Car = $resource('/api/v1/car:id', {
         // define the request params -> model props mappings

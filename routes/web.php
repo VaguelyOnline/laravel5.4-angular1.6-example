@@ -16,4 +16,10 @@ Route::get('/', function () {
 });
 
 // NATH - put this is api.php
-Route::resource('car', 'CarController');
+Route::group(
+    ['prefix' => 'api/v1'],
+    function ()
+    {
+        Route::resource('car', 'CarController');
+    }
+);

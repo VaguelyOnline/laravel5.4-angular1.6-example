@@ -15,5 +15,8 @@ require('./configure-angular');
 // register the model factories (Model classes)
 require('./register-model-factories');
 
+// register the service that will function as a client-side cache
+require('./register-remote-service');
+
 // now load / register the showroom controller
 require('./car-controller');

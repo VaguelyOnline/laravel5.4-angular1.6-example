@@ -3,26 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\CarRepository;
 
 class CarController extends Controller
 {
-    private static $INDEX = 0;
-
-    private static $CARS = 
-    [
-        [
-            "id" => static::$INDEX++,
-            "title" => "Alpha"
-        ],
-        [
-            "id" => static::$INDEX++,
-            "title" => "BMW"
-        ],
-        [
-            "id" => static::$INDEX++,
-            "title" => "Corvette"
-        ]
-    ];
 
     /**
      * Display a listing of the resource.
@@ -31,7 +15,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        return static::$CARS;
+        return CarRepository::getCars();
     }
 
     /**
@@ -41,6 +25,7 @@ class CarController extends Controller
      */
     public function create($request)
     {
+        
     }
 
     /**
@@ -51,12 +36,8 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        $newCar = [
-            'title' => $request->get('title'),
-            'id' => static::$INDEX++
-        ];
-
-        static::$CARS[] = $newCar;
+        $params = $request->only('title');
+        return CarRepository::addCar($params);
     }
 
     /**
@@ -67,7 +48,8 @@ class CarController extends Controller
      */
     public function show($id)
     {
-        //
+        $car = CarRepository::getCar($id);
+        return $this->paramOrNotFoundResponse($car);
     }
 
     /**
@@ -101,6 +83,17 @@ class CarController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $car = CarRepository::removeCar($id);
+        return $this->paramOrNotFoundResponse($car);
+    }
+
+    // returns either the $param given, or if that is null, 
+    // it returns a suitable, and always consistent not found
+    // response
+    private function paramOrNotFoundResponse($param)
+    {
+        return $param
+            ? $param
+            : response()->json(['message'=> 'Not found']);
     }
 }
