@@ -1,7 +1,5 @@
 // create and register the car controller with the module
-window.app.module.controller('CarCtrl', function($http, $location, $routeParams, CarService, Car) {
-    
-    var that = this;
+window.app.module.controller('CarCtrl', function($location, $routeParams, CarService) {
 
     // define a list of cars
     this.cars = CarService.getCars();

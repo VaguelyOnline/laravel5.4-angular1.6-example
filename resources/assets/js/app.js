@@ -7,8 +7,6 @@
 
 require('./bootstrap');
 
-
-
 // init angular
 require('./configure-angular');
 

@@ -5,9 +5,7 @@
 window.app.module.service('CarService', function (Car) {
 
     // init the cars
-    var cars = [];
-
-    cars = Car.query(function (response) {
+    var cars = Car.query(function (response) {
     });
 
     // when initialised - read the data from the server
@@ -20,7 +18,9 @@ window.app.module.service('CarService', function (Car) {
     {
         var car = new Car(newCar);
         car.$save().then(function (car) {
+            // the server has accepted our new car - push onto our local store
+            // of cars!
             cars.push(car);
         });
-    }
+    };
 });
